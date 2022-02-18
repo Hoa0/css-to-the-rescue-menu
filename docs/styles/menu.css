@@ -1,0 +1,26 @@
+body>header>h1 {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 4em;
+}
+
+body>header>p {
+    color: orangered;
+}
+
+/* hamburger vorm */
+body>header>section:first-of-type{
+    
+}
+
+body>main>section:first-of-type {
+    display: flex;
+}
+
+body>main>section:first-of-type>header {
+    color: blue;
+}
+
+body>main>section:first-of-type>dl {
+    color: palevioletred;
+}

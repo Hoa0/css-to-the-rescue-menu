@@ -1,30 +1,120 @@
+/* CSS Document */
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+:root {
+    --burger: #DF7B30;
+}
+
+/********************/
+/* ALGEMENE STIJLEN */
+/********************/
 ul {
     list-style: none;
 }
 
-body>header>h1 {
+body>header:first-of-type {
+    display: grid;
+    grid-template-areas: "burger subTitle title";
+}
+
+header:first-of-type>h1 {
     font-family: monospace;
     font-weight: bold;
     font-size: 4em;
+
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-transform: uppercase;
+
+    grid-area: title;
 }
 
-body>header>p {
+body>header:first-of-type>p {
     color: orangered;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-transform: uppercase;
+    grid-area: subTitle;
 }
 
 /* hamburger vorm */
-body>header>ul {
-    display: block;
+header:first-of-type>ul>*,
+header:first-of-type>ul>*::after,
+header:first-of-type>ul>*::before {
+    position: absolute;
+    grid-area: burger;
 }
 
-body>main>section:first-of-type {
-    display: flex;
+header:first-of-type>ul>*::after,
+header:first-of-type>ul>*::before {
+    content: '';
 }
 
-body>main>section:first-of-type>header {
+header:first-of-type>ul>li {
+    width: 170px;
+    height: 55px;
+    top: 88px;
+    /* left: 150px;
+    background-color: blue;*/
+    background-color: var(--burger);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+header:first-of-type>ul>li::after {
+    width: 100%;
+    height: 30px;
+    top: 140px;
+    background-color: red;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+
+
+header>section>div:first-of-type {
+    width: 170px;
+    height: 55px;
+    top: 88px;
+    background-color: blue;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+header>section>div:first-of-type::after {
+    width: 100%;
+    height: 30px;
+    top: 140px;
+    background-color: red;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+main>section:first-of-type>header {
     color: blue;
 }
 
-body>main>section:first-of-type>dl {
+main>section>dl {}
+
+main>section>dl>dt {
+    color: black;
+}
+
+main>section>dl>dd:nth-of-type(1n) {
+    color: green;
+    font-weight: bold;
+}
+
+/* price */
+main>section>dl>dd:nth-of-type(2n) {
     color: palevioletred;
 }

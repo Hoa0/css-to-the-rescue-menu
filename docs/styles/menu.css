@@ -7,11 +7,21 @@
     padding: 0;
 }
 
+@font-face {
+    font-family: 'Roboto',
+        sans-serif;
+    src: url();
+    /* https://fonts.google.com/specimen/Roboto */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
     --burger: #DF7B30;
+    --title: #024BC8;
 }
 
 /********************/
@@ -21,89 +31,72 @@ ul {
     list-style: none;
 }
 
-body>header:first-of-type {
-    display: grid;
-    grid-template-areas: "burger subTitle title";
+body::before {
+    content: '';
+    height: 53em;
+    display: block;
+    clip-path: polygon(0% 15%, 0 0, 15% 0%, 70% 0, 70% 70%, 100% 70%, 100% 80%, 70% 80%, 70% 100%,
+            50% 100%, 50% 80%, 0 80%);
+    background: rgb(179, 185, 223);
+    background: -moz-radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgba(54, 80, 159, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgba(54, 80, 159, 1) 100%);
+    background: radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgba(54, 80, 159, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3b9df", endColorstr="#36509f", GradientType=1);
 }
 
-header:first-of-type>h1 {
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 4em;
+body>header:first-of-type {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 1.5em;
 
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+/* burger v2 */
+body>header:first-of-type::before {
+    content: "";
+    width: 170px;
+    height: 55px;
+    top: 88px;
+    left: 3em;
+    position: absolute;
+    background-color: #36509f;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* hamburger*/
+body>header:first-of-type::after {
+    content: "";
+}
+
+body>header:first-of-type>h1 {
+    /* font-family: monospace;
+    font-weight: bold;
+    font-size: 4em;*/
+    font-family: 'Roboto';
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
+    color: var(--title);
 
-    grid-area: title;
 }
 
 body>header:first-of-type>p {
-    color: orangered;
+    font-family: 'Roboto';
+    color: var(--title);
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
-    grid-area: subTitle;
+
 }
 
-/* hamburger vorm */
-header:first-of-type>ul>*,
-header:first-of-type>ul>*::after,
-header:first-of-type>ul>*::before {
-    position: absolute;
-    grid-area: burger;
-}
-
-header:first-of-type>ul>*::after,
-header:first-of-type>ul>*::before {
-    content: '';
-}
-
-header:first-of-type>ul>li {
-    width: 170px;
-    height: 55px;
-    top: 88px;
-    /* left: 150px;
-    background-color: blue;*/
-    background-color: var(--burger);
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-}
-
-header:first-of-type>ul>li::after {
-    width: 100%;
-    height: 30px;
-    top: 140px;
-    background-color: red;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
-
-
-
-header>section>div:first-of-type {
-    width: 170px;
-    height: 55px;
-    top: 88px;
-    background-color: blue;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-}
-
-header>section>div:first-of-type::after {
-    width: 100%;
-    height: 30px;
-    top: 140px;
-    background-color: red;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
-
+/* menu */
 main>section:first-of-type>header {
     color: blue;
 }
-
-main>section>dl {}
 
 main>section>dl>dt {
     color: black;
@@ -111,10 +104,41 @@ main>section>dl>dt {
 
 main>section>dl>dd:nth-of-type(1n) {
     color: green;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 /* price */
 main>section>dl>dd:nth-of-type(2n) {
     color: palevioletred;
+}
+
+section {
+    display: grid;
+    border: 2px solid red;
+    grid-template-rows: 4em 1fr;
+}
+
+section dl {
+    /* height: 200px; */
+    display: grid;
+    background-color: #f7f7f7;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+}
+
+dt {
+    font-weight: bold;
+    /* Zodat de titels niet zoveel tekst gebruiken in mobile mode */
+    max-width: 20ch;
+}
+
+dl dd,
+dl dt {
+    padding: 1em 0.25em;
+    margin-bottom: 2em;
+}
+
+/* Issue is bijvoorbeeld bij platters dat het niet dezelfde orde heeft */
+dl>dd:nth-of-type(2n)::before {
+    content: "€";
 }

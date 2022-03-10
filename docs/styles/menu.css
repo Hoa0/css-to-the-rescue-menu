@@ -20,8 +20,9 @@
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
-    --burger: #DF7B30;
+    --burger: #ffffff;
     --title: #024BC8;
+
 }
 
 /********************/
@@ -33,6 +34,7 @@ ul {
 
 body::before {
     content: '';
+    max-width: 500px;
     height: 53em;
     display: block;
     clip-path: polygon(0% 15%, 0 0, 15% 0%, 70% 0, 70% 70%, 100% 70%, 100% 80%, 70% 80%, 70% 100%,
@@ -46,7 +48,8 @@ body::before {
 
 body>header:first-of-type {
     display: flex;
-    flex-direction: row-reverse;
+    max-width: 500px;
+    flex-direction: row;
     padding: 1.5em;
 
     position: absolute;
@@ -57,14 +60,17 @@ body>header:first-of-type {
 /* burger v2 */
 body>header:first-of-type::before {
     content: "";
-    width: 170px;
-    height: 55px;
-    top: 88px;
-    left: 3em;
-    position: absolute;
-    background-color: #36509f;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    display: block;
+
+    /* Space between the buns */
+    width: 200px;
+    /*height: 55px;*/
+
+    /* Top bun */
+    border-top: 80px solid var(--burger);
+
+    /* Bottom bun */
+    border-bottom: 50px solid #f5b230;
 }
 
 /* hamburger*/
@@ -90,32 +96,34 @@ body>header:first-of-type>p {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
-
 }
 
 /* menu */
 main>section:first-of-type>header {
-    color: blue;
+    color: #36509f;
 }
 
 main>section>dl>dt {
-    color: black;
+    /*color: black;*/
+    color: #36509f;
 }
 
 main>section>dl>dd:nth-of-type(1n) {
-    color: green;
-    /* font-weight: bold; */
+    /*color: green;
+     font-weight: bold; */
+    color: #38393d;
 }
 
 /* price */
 main>section>dl>dd:nth-of-type(2n) {
-    color: palevioletred;
+    color: #0834b9;
 }
 
 section {
     display: grid;
-    border: 2px solid red;
     grid-template-rows: 4em 1fr;
+    border: 2px solid red;
+    max-width: 400px;
 }
 
 section dl {

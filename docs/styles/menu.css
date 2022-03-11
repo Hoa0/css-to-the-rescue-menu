@@ -22,7 +22,6 @@
 :root {
     --burger: #ffffff;
     --title: #024BC8;
-
 }
 
 /********************/
@@ -35,67 +34,86 @@ ul {
 body::before {
     content: '';
     max-width: 500px;
+    max-height: 700px;
     height: 53em;
     display: block;
     clip-path: polygon(0% 15%, 0 0, 15% 0%, 70% 0, 70% 70%, 100% 70%, 100% 80%, 70% 80%, 70% 100%,
             50% 100%, 50% 80%, 0 80%);
     background: rgb(179, 185, 223);
-    background: -moz-radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgba(54, 80, 159, 1) 100%);
+    background: -moz-radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgb(34, 70, 176) 100%);
     background: -webkit-radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgba(54, 80, 159, 1) 100%);
     background: radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgba(54, 80, 159, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3b9df", endColorstr="#36509f", GradientType=1);
 }
 
-body>header:first-of-type {
+body>header {
     display: flex;
-    max-width: 500px;
-    flex-direction: row;
+    max-width: 32em;
+    flex-direction: row-reverse;
     padding: 1.5em;
-
     position: absolute;
     top: 0;
     width: 100%;
+    background-color: black;
+    align-items: end;
+    justify-content: end;
+    --burgerSize: min(40vw, 12.8em);
 }
 
 /* burger v2 */
-body>header:first-of-type::before {
+body>header::before {
     content: "";
+    position: absolute;
+    top: calc(var(--burgerSize)/10);
+    left: calc(var(--burgerSize)/10);
     display: block;
-
-    /* Space between the buns */
-    width: 200px;
-    /*height: 55px;*/
-
-    /* Top bun */
-    border-top: 80px solid var(--burger);
-
-    /* Bottom bun */
-    border-bottom: 50px solid #f5b230;
+    width: var(--burgerSize);
+    aspect-ratio: 1/1;
+    /* border-top: 80px solid var(--burger); */
+    /* border-bottom: 50px solid var(--burger); */
+    border-radius: 30% 30% 20% 20%;
+    flex-shrink: 0;
+    /* burger krimpt niet*/
+    /* align-self: start; */
+    background-image: linear-gradient(180deg, white 40%, transparent 40% 80%, white 80%);
 }
 
-/* hamburger*/
-body>header:first-of-type::after {
-    content: "";
-}
-
-body>header:first-of-type>h1 {
-    /* font-family: monospace;
-    font-weight: bold;
-    font-size: 4em;*/
+body>header>h1 {
     font-family: 'Roboto';
+    /* position: relative; */
+    /* left: 3em; */
+    /* top: 2.5em; */
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
     color: var(--title);
+
 
 }
 
 body>header:first-of-type>p {
     font-family: 'Roboto';
+    /* position: relative; */
+    /* left: 2em; */
+    /* top: 5em; */
     color: var(--title);
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
+}
+
+/* hamburger*/
+body>header::after {
+    content: "";
+    position: absolute;
+    left: calc(var(--burgerSize)/20);
+    top: calc(var(--burgerSize)*.63);
+    width: calc(var(--burgerSize)*1.1);
+    /* height: 20px; */
+    border-radius: 10em;
+    /* box-shadow: 10px 85px var(--burger); */
+    aspect-ratio: 8/1;
+    background-color: white;
 }
 
 /* menu */
@@ -149,4 +167,10 @@ dl dt {
 /* Issue is bijvoorbeeld bij platters dat het niet dezelfde orde heeft */
 dl>dd:nth-of-type(2n)::before {
     content: "€";
+}
+
+/*****************************/
+/*------ Website modes ------*/
+@media (min-width:40em) {
+    body::before {}
 }

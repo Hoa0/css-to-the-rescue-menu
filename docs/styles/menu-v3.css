@@ -1,3 +1,4 @@
+
 /* CSS Document */
 *,
 *::after,
@@ -21,7 +22,7 @@
 /*********************/
 :root {
     --burger: #ffffff;
-    --title: #024BC8;
+    --primaryColorBlue: #024BC8;
 }
 
 /********************/
@@ -32,7 +33,7 @@ ul {
 }
 
 body{
-    max-width: 32em;
+    /*max-width: 32em;*/
     --triangleSize: min(40vw, 12.8em);
     margin: auto;
     position: relative;
@@ -77,7 +78,6 @@ body>header {
     position: absolute;
     top: 0;
     width: 100%;
-    /*background-color: black;*/
     align-items: end;
     justify-content: end;
     --burgerSize: min(40vw, 12.8em);
@@ -96,11 +96,9 @@ body>header::before {
     /* border-top: 80px solid var(--burger); */
     /* border-bottom: 50px solid var(--burger); */
     border-radius: 30% 30% 20% 20%;
-    flex-shrink: 0;
     /* burger krimpt niet*/
-    /* align-self: start; */
+    flex-shrink: 0;
     background-image: linear-gradient(180deg, #024BC8 40%, transparent 40% 80%, #024BC8 80%);
-    /*background-image: linear-gradient(180deg, white 40%, transparent 40% 80%, white 80%);*/
     z-index: 2;
 }
 
@@ -115,7 +113,7 @@ body>header::after {
     border-radius: 10em;
     /* box-shadow: 10px 85px var(--burger); */
     aspect-ratio: 8/1;
-    background-color: #024BC8;
+    background-color: var(--primaryColorBlue);
     z-index: 2;
 }
 
@@ -127,9 +125,7 @@ body>header>h1 {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
-    color: var(--title);
-
-
+    color: var(--primaryColorBlue);
 }
 
 body>header:first-of-type>p {
@@ -137,43 +133,85 @@ body>header:first-of-type>p {
     /* position: relative; */
     /* left: 2em; */
     /* top: 5em; */
-    color: var(--title);
+    color: var(--primaryColorBlue);
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
 }
 
-
-
-/* menu */
-main>section:first-of-type>header {
-    color: #36509f;
+/* hide input radio */
+input[type="radio"]:checked,
+input[type="radio"]:not(:checked),input[type="checkbox"]:checked,
+input[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
 }
 
-main>section>dl>dt {
-    /*color: black;*/
-    color: #36509f;
+/*input labels menu */
+label{
+   /* writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-transform: uppercase;*/
+    cursor: pointer;
 }
 
-main>section>dl>dd:nth-of-type(1n) {
-    /*color: green;
-     font-weight: bold; */
-    color: #38393d;
+/* show content */
+input[type="radio"]#all:checked ~ div section:nth-of-type(1),
+input[type="radio"]#all:checked ~ div section:nth-of-type(2),
+input[type="radio"]#all:checked ~ div section:nth-of-type(3),
+input[type="radio"]#all:checked ~ div section:nth-of-type(4),
+input[type="radio"]#all:checked ~ div section:nth-of-type(5),
+input[type="radio"]#all:checked ~ div section:nth-of-type(6),
+input[type="radio"]#all:checked ~ div section:nth-of-type(7),
+input[type="radio"]#lunch:checked ~ div section:nth-of-type(2),
+input[type="radio"]#lunch:checked ~ div section:nth-of-type(3),
+input[type="radio"]#lunch:checked ~ div section:nth-of-type(4),
+input[type="radio"]#dinner:checked ~ div section:nth-of-type(1),
+input[type="radio"]#dinner:checked ~ div section:nth-of-type(5),
+input[type="radio"]#dinner:checked ~ div section:nth-of-type(6),
+input[type="radio"]#dessert:checked ~ div section:nth-of-type(7)
+{
+/*height: auto; 
+ opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms; height: auto; opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms;*/
+    display: block;
 }
 
-/* price */
-main>section>dl>dd:nth-of-type(2n) {
-    color: #0834b9;
+
+
+
+
+
+
+
+
+
+
+
+/* container content */
+div{
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+gap: 0.5em;
 }
 
+/* container content */
 section {
-    display: grid;
-    grid-template-rows: 4em 1fr;
-    border: 0.2em solid #024bc8;
+    display: none;
+    border: 0.2em solid var(--primaryColorBlue);
     max-width: 400px;
-    color: #024bc8;
+    color: var(--primaryColorBlue);
+
+    /* hide content 
+    overflow: hidden;
+      height: 0;
+      opacity: 0;
+      transition: height 0ms 400ms, opacity 400ms 0ms;*/
 }
 
+/* content information */
 section dl {
     /* height: 200px; */
     display: grid;
@@ -197,84 +235,4 @@ dl dt {
 /* Issue is bijvoorbeeld bij platters dat het niet dezelfde orde heeft */
 dl>dd:nth-of-type(2n)::before {
     content: "€";
-}
-label{
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-
-div{
- grid-template-columns: repeat(3, 1fr); 
- /* grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));  */
-}
-/* hide input radio */
-input[type="radio"]:checked,
-input[type="radio"]:not(:checked),input[type="checkbox"]:checked,
-input[type="checkbox"]:not(:checked) {
-  position: absolute;
-  left: -9999px;
-}
-
-
-section{
-  overflow: hidden;  /* Hide the element content, while height = 0 */
-    height: 0;
-
-    opacity: 0;
-    transition: height 0ms 400ms, opacity 400ms 0ms;
-}
-
-#all:checked ~ div section:nth-of-type(1),
-#all:checked ~ div section:nth-of-type(2),
-#all:checked ~ div section:nth-of-type(3),
-#all:checked ~ div section:nth-of-type(4),
-#all:checked ~ div section:nth-of-type(5),
-#all:checked ~ div section:nth-of-type(6),
-#all:checked ~ div section:nth-of-type(7),
-#lunch:checked ~ div section:nth-of-type(2),
-#lunch:checked ~ div section:nth-of-type(3),
-#lunch:checked ~ div section:nth-of-type(4),
-#dinner:checked ~ div section:nth-of-type(1),
-#dinner:checked ~ div section:nth-of-type(5),
-#dinner:checked ~ div section:nth-of-type(6),
-#dessert:checked ~ div section:nth-of-type(7)
-{
- height: auto; 
- opacity: 1;
-    transition: height 0ms 0ms, opacity 600ms 0ms; height: auto; opacity: 1;
-    transition: height 0ms 0ms, opacity 600ms 0ms;
-}
-
-#lunch:checked ~ div section:nth-of-type(2),
-#lunch:checked ~ div section:nth-of-type(3),
-#lunch:checked ~ div section:nth-of-type(4) {
-    background-color: #ffcc00;
-    opacity: 1;
-}
-
-/*****************************/
-/*------ Website modes ------*/
-@media (min-width:40em) {
-    body {
-
-        max-width: 82vw;
-        background: rgb(255,255,255);
-        background: radial-gradient(circle, rgba(255,255,255,0.5267165492957746) 35%, rgba(2,75,200,0.21967429577464792) 100%);
-    }
-
-    body>header{
-        max-width: 74vw;
-    }
-.menu{
-        display: flex;
-        flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-gap: 1rem;
-}
-    
 }

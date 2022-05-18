@@ -6,4 +6,4 @@ assignment: responsive restaurant menu
 
 ## Proces
 
-Bekijk hier mijn proces: [proces op notion](https://special-sprite-fab.notion.site/Minor-css-672d24cabae74962af3d9f933174ce8b)
+Bekijk hier mijn proces: [proces op notion](https://special-sprite-fab.notion.site/CSS-wiki-her-d7c220a3618e4238a5dfa7505b4831bc)

@@ -137,9 +137,18 @@ Om filter op een nette manier weer te geven zonder dat er aparte spaties tussen 
 
 - met display: kan je geen transition meegeven.
 
-Waar wil je meer mee gaan doen?
+### Waar wil je meer mee gaan doen?
 
 - responsive met grid en flexbox
+
+## website
+### mobiel
+<img src="https://github.com/Hoa0/css-to-the-rescue-menu/blob/main/docs/assignments/restaurantMenu/img/best.png" width="300">
+
+### website
+<img src="" >
+
+
 
 ## Installation
 

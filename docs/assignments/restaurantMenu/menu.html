@@ -4,38 +4,33 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>A template for a responsive restaurant menu</title>
+	<title>Restaurant menu</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="../restaurantMenu/css/menu-v3.css" type="text/css" rel="stylesheet">
-	<!--<link href="../styles/menu.css" type="text/css" rel="stylesheet"> -->
-	<!-- SUGGESTIONS FOR STYLING
-https://duckduckgo.com/?q=beautiful+restaurant+menus&t=ffab&iax=images&ia=images
--->
 </head>
 
 <body>
-	<!--<input id="menu" type="checkbox" name="checkbox" />
-	<label for="menu">Menu</label>-->
+
 	<header>
 		<h1><span>Russ</span> <span>&</span> <span>Daughters</span></h1>
 		<p>appetizing since 1924</p>
 	</header>
 
 	<main>
+		<!-- input toggle for open menu-->
+		<input id="all" type="radio" name="checkbox" checked="" />
+		<label for="all">all</label>
 
+		<input id="lunch" type="radio" name="checkbox" />
+		<label for="lunch">Lunch</label>
 
-			<input id="all" type="radio" name="checkbox" checked="" />
-			<label for="all">all</label>
-			
-			<input id="lunch" type="radio" name="checkbox" />
-			<label for="lunch">Lunch</label>
-			
-			<input id="dinner" type="radio" name="checkbox" />
-			<label for="dinner">Dinner</label>
-			
-			<input id="dessert" type="radio" name="checkbox" />
-			<label for="dessert">Dessert</label>
+		<input id="dinner" type="radio" name="checkbox" />
+		<label for="dinner">Dinner</label>
 
+		<input id="dessert" type="radio" name="checkbox" />
+		<label for="dessert">Dessert</label>
+
+		<!-- content menu-->
 		<div>
 			<section>
 				<header>

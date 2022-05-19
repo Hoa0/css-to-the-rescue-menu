@@ -1,158 +1,191 @@
-
-/* CSS Document */
+/* CSS Document - restaurant menu*/
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
-    font-family: 'Roboto',
-        sans-serif;
-    src: url();
-    /* https://fonts.google.com/specimen/Roboto */
+  font-family: "Roboto", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
-    --burger: #ffffff;
-    --primaryColorBlue: #024BC8;
+  --burger: #ffffff;
+  --primaryColorBlue: #024bc8;
+  --primaryColorWhite: #ffffff;
+  --btnHoverBlue: #000845;
 }
 
 /********************/
 /* ALGEMENE STIJLEN */
 /********************/
 ul {
-    list-style: none;
+  list-style: none;
+}
+h1{
+    font-size: 1.6em;
 }
 
-body{
-    /*max-width: 32em;*/
-    --triangleSize: min(40vw, 12.8em);
-    margin: auto;
-    position: relative;
-    
+p{
+    font-size: 1em;
+}
+
+h1,
+h2,
+p,
+dd,
+dl,
+dt,
+li,
+label {
+  font-family: "Roboto";
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--primaryColorBlue);
+}
+
+ dd, dl, dt{
+    font-size: 0.8em;
+}
+
+body {
+  --triangleSize: min(40vw, 12.8em);
+  margin: 0;
+  position: relative;
 }
 
 body::before {
-    content: '';
-    height: 100vh;
-    display: block;
-        clip-path: polygon(0% 15%, 0 0, 15% 0%, 75% 0, 75% 72%, 100% 72%, 100% 80%, 75% 80%, 75% 100%, 58% 100%, 58% 80%, 0 80%);
-    background: rgb(253, 253, 253);
-    background: -moz-radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgb(34, 70, 176) 100%);
-    background: -webkit-radial-gradient(circle, rgba(179, 185, 223, 1) 0%, rgba(54, 80, 159, 1) 100%);
-    background: radial-gradient(circle, rgb(255 255 255) 0%, rgb(2 75 200) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3b9df", endColorstr="#36509f", GradientType=1);
+  content: "";
+  height: 100vh;
+  display: block;
+  clip-path: polygon(
+    0% 15%,
+    0 0,
+    15% 0%,
+    75% 0,
+    75% 72%,
+    100% 72%,
+    100% 80%,
+    75% 80%,
+    75% 100%,
+    58% 100%,
+    58% 80%,
+    0 80%
+  );
+  background: rgb(253, 253, 253);
+  background: -moz-radial-gradient(
+    circle,
+    rgba(179, 185, 223, 1) 0%,
+    rgb(34, 70, 176) 100%
+  );
+  background: -webkit-radial-gradient(
+    circle,
+    rgba(179, 185, 223, 1) 0%,
+    rgba(54, 80, 159, 1) 100%
+  );
+  background: radial-gradient(circle, rgb(255 255 255) 0%, rgb(2 75 200) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3b9df", endColorstr="#36509f", GradientType=1);
 }
 
-/* triangle
+/* triangle*/
 body::after{
     content: "";
     display: block;
     position: absolute;
-    height: 55%;
-    /*top: calc(var(--triangleSize)/1.3);
-    top: 17%;
+    aspect-ratio: 3/6;
+    top: 9em;
     left: calc(var(--triangleSize)/2.8);
     width: calc(var(--triangleSize)/0.9);
     flex-shrink: 0;
-   /* background-color: rgb(218, 218, 218);
     -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
     background: linear-gradient(to bottom right, transparent 50%, #ffffff 50%, #ffffff 100%, #ffffff 100%);
     z-index: 1;
-}*/
+}
 
-body>header {
-    display: flex;
-    max-width: 32em;
-    flex-direction: row-reverse;
-    padding: 1.5em;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    align-items: end;
-    justify-content: end;
-    --burgerSize: min(40vw, 12.8em);
-    /*custom property, wordt niet groter dan 32 em "max-width"*/
+body > header {
+  display: flex;
+  max-width: 32em;
+  flex-direction: row-reverse;
+  padding: 1.5em;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  align-items: end;
+  justify-content: end;
+  --burgerSize: min(40vw, 12.8em);
+  /*custom property, wordt niet groter dan 32 em "max-width"*/
 }
 
 /* burger v2 */
-body>header::before {
-    content: "";
-    position: absolute;
-    top: calc(var(--burgerSize)/7.5);
-    left: calc(var(--burgerSize)/5);
-    display: block;
-    width: var(--burgerSize);
-    aspect-ratio: 1/1;
-    /* border-top: 80px solid var(--burger); */
-    /* border-bottom: 50px solid var(--burger); */
-    border-radius: 30% 30% 20% 20%;
-    /* burger krimpt niet*/
-    flex-shrink: 0;
-    background-image: linear-gradient(180deg, #024BC8 40%, transparent 40% 80%, #024BC8 80%);
-    z-index: 2;
+body > header::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--burgerSize) / 7.5);
+  left: calc(var(--burgerSize) / 5);
+  display: block;
+  width: var(--burgerSize);
+  aspect-ratio: 1/1;
+  border-radius: 30% 30% 20% 20%;
+  /* burger krimpt niet*/
+  flex-shrink: 0;
+  background-image: linear-gradient(
+    180deg,
+    #024bc8 40%,
+    transparent 40% 80%,
+    #024bc8 80%
+  );
+  z-index: 2;
+  animation: backgroundChange 5s infinite;
 }
 
 /* hamburger*/
-body>header::after {
-    content: "";
-    position: absolute;
-    left: calc(var(--burgerSize)/6.5); 
-    top: calc(var(--burgerSize)*.68);
-    width: calc(var(--burgerSize)*1.1);
-    /* height: 20px; */
-    border-radius: 10em;
-    /* box-shadow: 10px 85px var(--burger); */
-    aspect-ratio: 8/1;
-    background-color: var(--primaryColorBlue);
-    z-index: 2;
+body > header::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--burgerSize) / 6.5);
+  top: calc(var(--burgerSize) * 0.68);
+  width: calc(var(--burgerSize) * 1.1);
+  border-radius: 10em;
+  aspect-ratio: 8/1;
+  background-color: var(--primaryColorBlue);
+  z-index: 2;
 }
 
-body>header>h1 {
-    font-family: 'Roboto';
-    /* position: relative; */
-    /* left: 3em; */
-    /* top: 2.5em; */
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    text-transform: uppercase;
-    color: var(--primaryColorBlue);
+body > header > h1 {
+  /* position: relative; */
+  /* left: 3em; */
+  /* top: 2.5em; */
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-transform: uppercase;
+  color: var(--primaryColorBlue);
 }
 
-body>header:first-of-type>p {
-    font-family: 'Roboto';
-    /* position: relative; */
-    /* left: 2em; */
-    /* top: 5em; */
-    color: var(--primaryColorBlue);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    text-transform: uppercase;
+body > header:first-of-type > p {
+  font-family: "Roboto";
+  /* position: relative; */
+  /* left: 2em; */
+  /* top: 5em; */
+  color: var(--primaryColorBlue);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-transform: uppercase;
 }
 
 /* hide input radio */
 input[type="radio"]:checked,
-input[type="radio"]:not(:checked),input[type="checkbox"]:checked,
+input[type="radio"]:not(:checked),
+input[type="checkbox"]:checked,
 input[type="checkbox"]:not(:checked) {
   position: absolute;
   left: -9999px;
-}
-
-/*input labels menu */
-label{
-   /* writing-mode: vertical-rl;
-    text-orientation: mixed;
-    text-transform: uppercase;*/
-    cursor: pointer;
 }
 
 /* show content */
@@ -169,70 +202,254 @@ input[type="radio"]#lunch:checked ~ div section:nth-of-type(4),
 input[type="radio"]#dinner:checked ~ div section:nth-of-type(1),
 input[type="radio"]#dinner:checked ~ div section:nth-of-type(5),
 input[type="radio"]#dinner:checked ~ div section:nth-of-type(6),
-input[type="radio"]#dessert:checked ~ div section:nth-of-type(7)
-{
-/*height: auto; 
- opacity: 1;
-    transition: height 0ms 0ms, opacity 600ms 0ms; height: auto; opacity: 1;
-    transition: height 0ms 0ms, opacity 600ms 0ms;*/
-    display: block;
+input[type="radio"]#dessert:checked ~ div section:nth-of-type(7) {
+  display: block;
+}
+
+label {
+  position: absolute;
+  left: 5%;
+}
+
+input[type="radio"]:checked + label,
+input[type="radio"]:not(:checked) + label {
+  position: relative;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  line-height: 3em;
+  font-size: 1.2em;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-/* container content */
-div{
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;
-gap: 0.5em;
+/* menu input status styling, blue background-color*/
+input[type="radio"]:checked + label:after,
+input[type="radio"]:not(:checked) + label:after {
+  content: "";
+  border-radius: 0.3em;
+  height: 2em;
+  padding: 1em;
+  position: absolute;
+  bottom: 0;
+  left: 1em;
+  top: -0.5em;
+  z-index: -1;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-/* container content */
-section {
-    display: none;
-    border: 0.2em solid var(--primaryColorBlue);
-    max-width: 400px;
-    color: var(--primaryColorBlue);
+input[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  width: 0;
+}
+/* input label menu, focus, position*/
+input[type="radio"]:checked + label:after {
+  top: -0.3em;
+  left: -0.1em;
+  text-align: center;
+  opacity: 1;
+  width: 100%;
+}
 
-    /* hide content 
-    overflow: hidden;
-      height: 0;
-      opacity: 0;
-      transition: height 0ms 400ms, opacity 400ms 0ms;*/
+/* content menu status*/
+input#all:checked + label:after,
+input#all:not(:checked) + label:after,
+input#lunch:checked + label:after,
+input#lunch:not(:checked) + label:after,
+input#dinner:checked + label:after,
+input#dinner:not(:checked) + label:after,
+input#dessert:checked + label:after,
+input#dessert:not(:checked) + label:after {
+  background-color: var(--primaryColorBlue);
+}
+
+/* text color menu status */
+input#all:checked + label,
+input#lunch:checked + label,
+input#dinner:checked + label,
+input#dessert:checked + label {
+  color: var(--primaryColorWhite);
+}
+input#all:not(:checked) + label,
+input#lunch:not(:checked) + label,
+input#dinner:not(:checked) + label,
+input#dessert:not(:checked) + label {
+  color: var(--primaryColorBlue);
+}
+
+label:hover  {
+ 
+  background-color: var(--btnHoverBlue);
+  padding: 0.4em;
+  border-radius: 0.3em;
+}
+
+ label:hover, input {
+     color: var(--primaryColorWhite);
+}
+
+
+/* container content */
+main > div > section {
+  display: none;
+  border: 0.2em solid var(--primaryColorBlue);
+  /* 
+    https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
+    clamp is een combinatie van min() max() maar dan met een tussen formaat min, preferred, max
+    
+  max-width: clamp(20em, 20vw, 42vw);
+  /* max-width: minmax(33vw, 100vw); */
+  margin: 0.5em 0;
+  width: 100%;
+  height: fit-content;
+}
+
+main > div > section>header, main > div > section> h2 {
+  text-align: center;
+  padding: 0.8em;
 }
 
 /* content information */
-section dl {
-    /* height: 200px; */
-    display: grid;
-    background-color: #f7f7f7;
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(3, auto);
+main > div > section dl {
+  display: grid;
+  background-color: #f7f7f7;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
 }
 
-dt {
-    font-weight: bold;
-    /* Zodat de titels niet zoveel tekst gebruiken in mobile mode */
-    max-width: 20ch;
+main > div > section > dl,
+blockquote {
+  padding: 0.5em;
 }
 
-dl dd,
-dl dt {
-    padding: 1em 0.25em;
-    margin-bottom: 2em;
+main > div > section > dl dt {
+  font-weight: bold;
+  /* Zodat de titels niet zoveel tekst gebruiken in mobile mode */
+  max-width: 20vw;
+}
+
+main > div > section dl dd,
+main > div > section dl dt {
+  padding: 1em 0.25em;
+  margin-bottom: 2em;
 }
 
 /* Issue is bijvoorbeeld bij platters dat het niet dezelfde orde heeft */
-dl>dd:nth-of-type(2n)::before {
-    content: "€";
+main > div > section > dl > dd:nth-of-type(2n)::before {
+  content: "€";
+}
+
+/**/
+input[type="checked"]#test:checked ~ main {
+  background-color: black;
+}
+
+/* website mode - responsive */
+@media (min-width: 40em) {
+  body {
+    max-width: 60vw;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.5267165492957746) 35%,
+      rgba(2, 75, 200, 0.21967429577464792) 100%
+    );
+  }
+
+  body::after{
+      display: none;
+  }
+  h1{
+    font-size: 2em;
+}
+
+p{
+    font-size: 1.2em;
+}
+
+  p, dd, dl, dt{
+    font-size: 1em;
+}
+  /* container content */
+  main > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+
+  /* container content */
+main > div > section {
+    max-width: min-content;
+    width: 50vw;
+}
+}
+
+/* change background color hamburger */
+@keyframes backgroundChange {
+  0% {
+    background-image: linear-gradient(
+      180deg,
+      #1b5dcd 40%,
+      transparent 40% 80%,
+      #1b5dcd 80%
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      180deg,
+      #346ed3 40%,
+      transparent 40% 80%,
+
+      #346ed3 80%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      180deg,
+      #4d81d8 40%,
+      transparent 40% 80%,
+      #4d81d8 80%
+    );
+  }
+
+  60% {
+    background-image: linear-gradient(
+      180deg,
+      #6793de 40%,
+      transparent 40% 80%,
+      #6793de 80%
+    );
+  }
+
+  60% {
+    background-image: linear-gradient(
+      180deg,
+      #80a5e3 40%,
+      transparent 40% 80%,
+      #80a5e3 80%
+    );
+  }
+
+  80% {
+    background-image: linear-gradient(
+      180deg,
+      #023e8a 40%,
+      transparent 40% 80%,
+      #023e8a 80%
+    );
+  }
+
+  80% {
+    background-image: linear-gradient(
+      180deg,
+      #99b7e9 40%,
+      transparent 40% 80%,
+      #99b7e9 80%
+    );
+  }
 }
